@@ -7,20 +7,20 @@ import lombok.NoArgsConstructor;
 class TodoMapper {
 
     static Todo toToDo(TodoEntity entity) {
-        return new Todo(
-            entity.getCode(),
-            entity.getTitle(),
-            entity.getDescription(),
-            entity.isCompleted()
-        );
+        return Todo.builder()
+        .code(entity.getCode())
+        .title(entity.getTitle())
+        .description(entity.getDescription())
+        .completed(entity.isCompleted())
+        .build();
     }
 
     static TodoEntity toEntity(Todo todo) {
         return TodoEntity.builder()
-        .code(todo.code())
-        .title(todo.title())
-        .description(todo.description())
-        .completed(todo.completed())
-        .build();
+                .code(todo.code())
+                .title(todo.title())
+                .description(todo.description())
+                .completed(todo.completed())
+                .build();
     }
 }

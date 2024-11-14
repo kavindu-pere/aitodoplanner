@@ -1,7 +1,7 @@
 import Todo from "Frontend/generated/dev/kavindupere/aitodoplanner/domain/Todo";
 import TodoModel from "Frontend/generated/dev/kavindupere/aitodoplanner/domain/TodoModel";
 import { useForm } from "@vaadin/hilla-react-form";
-import { Button, Checkbox, TextField } from "@vaadin/react-components";
+import { Button, Checkbox, TextArea, TextField } from "@vaadin/react-components";
 import { useEffect } from "react";
 
 interface TodoEditorProps {
@@ -17,10 +17,10 @@ export default function TodoEditor({ todo, onSubmit }: TodoEditorProps) {
     }, [todo]);
 
     return (
-        <div className="grid grid-cols-2 gap-s items-basline">
+        <div className="grid grid-cols-1 gap-s items-basline">
             <TextField label="Id" readonly {...field(model.code)} />
             <TextField label="Title" {...field(model.title)} />
-            <TextField label="Description" {...field(model.description)} />
+            <TextArea label="Description" {...field(model.description)} />
             <Checkbox label="Completed" {...field(model.completed)} />
             <Button onClick={submit}>Save</Button>
         </div>

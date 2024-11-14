@@ -2,7 +2,7 @@ import Todo from "Frontend/generated/dev/kavindupere/aitodoplanner/domain/Todo";
 import { useEffect, useState } from "react";
 import "../styles/styles.css";
 import { TodoService } from "Frontend/generated/endpoints";
-import { Grid, GridColumn } from "@vaadin/react-components";
+import { Grid, GridColumn, HorizontalLayout } from "@vaadin/react-components";
 import TodoEditor from "Frontend/components/TodoEditor";
 
 export default function TodosView() {
@@ -10,7 +10,10 @@ export default function TodosView() {
     const [selected, setSelected] = useState<Todo | null>();
 
     useEffect(() => {
-        TodoService.findAll().then(setTodos);
+        TodoService.findAll().then(all => {
+            setTodos(all);
+            if (all.length) setSelected(all[0]);
+        });
     }, []);
 
     async function onSubmit(todo: Todo) {
@@ -22,18 +25,21 @@ export default function TodosView() {
         <div className="p-m">
             <h1>Todos</h1>
 
-            <Grid
-                items={todos}
-                onActiveItemChanged={(e) => setSelected(e.detail.value)}
-                selectedItems={selected ? [selected] : []}
-            >
-                <GridColumn path="code" />
-                <GridColumn path="title" />
-                <GridColumn path="description" />
-                <GridColumn path="completed" />
-            </Grid>
+            <HorizontalLayout theme="spacing padding">
+                <Grid
+                    items={todos}
+                    onActiveItemChanged={(e) => setSelected(e.detail.value)}
+                    selectedItems={selected ? [selected] : []}
+                >
+                    <GridColumn path="code" />
+                    <GridColumn path="title" />
+                    <GridColumn path="description" />
+                    <GridColumn path="completed" />
+                </Grid>
 
-            {selected && <TodoEditor todo={selected} onSubmit={onSubmit}/>}
+                {selected && <TodoEditor todo={selected} onSubmit={onSubmit} />}
+            </HorizontalLayout>
+
         </div>
     );
 }
