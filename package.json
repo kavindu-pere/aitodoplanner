@@ -25,6 +25,7 @@
     "construct-style-sheets-polyfill": "3.1.0",
     "date-fns": "2.29.3",
     "lit": "3.2.1",
+    "no-name": "file:",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.26.2"
@@ -119,7 +120,7 @@
       "workbox-core": "7.3.0",
       "workbox-precaching": "7.3.0"
     },
-    "hash": "ed90456872af71a8f368453369636c5401d9d5dfa486d99b952b54d37bbf8cba"
+    "hash": "db2bf5deeaaa5de9845299744b310881bad50c8ef6e23540944308770878bf86"
   },
   "overrides": {
     "@vaadin/bundles": "$@vaadin/bundles",

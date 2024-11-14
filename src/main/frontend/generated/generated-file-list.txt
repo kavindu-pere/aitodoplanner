@@ -1,5 +1,5 @@
 TodoService.ts
-dev/kavindupere/aitodoplanner/data/Todo.ts
+dev/kavindupere/aitodoplanner/domain/Todo.ts
 connect-client.default.ts
 endpoints.ts
-dev/kavindupere/aitodoplanner/data/TodoModel.ts
+dev/kavindupere/aitodoplanner/domain/TodoModel.ts

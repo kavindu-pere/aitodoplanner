@@ -1,4 +1,4 @@
 @NonNullApi
-package dev.kavindupere.aitodoplanner.service;
+package dev.kavindupere.aitodoplanner.domain;
 
 import org.springframework.lang.NonNullApi;

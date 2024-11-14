@@ -1,4 +1,4 @@
-import Todo from "Frontend/generated/dev/kavindupere/aitodoplanner/data/Todo";
+import Todo from "Frontend/generated/dev/kavindupere/aitodoplanner/domain/Todo";
 import { useEffect, useState } from "react";
 import "../styles/styles.css";
 import { TodoService } from "Frontend/generated/endpoints";
@@ -15,7 +15,7 @@ export default function TodosView() {
 
     async function onSubmit(todo: Todo) {
         const updated = await TodoService.save(todo);
-        setTodos(todos.map(t => t.id === updated.id ? updated : t));
+        setTodos(todos.map(t => t.code === updated.code ? updated : t));
     }
 
     return (
@@ -27,6 +27,7 @@ export default function TodosView() {
                 onActiveItemChanged={(e) => setSelected(e.detail.value)}
                 selectedItems={selected ? [selected] : []}
             >
+                <GridColumn path="code" />
                 <GridColumn path="title" />
                 <GridColumn path="description" />
                 <GridColumn path="completed" />
